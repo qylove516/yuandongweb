@@ -14,7 +14,7 @@
                 </ol>
             {% endif %}
             {% for field in form  %}
-                <div class="col-xs-3 form-tag">
+                <div class="col-md-4 form-tag">
                     <div class="fieldWrapper" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
                     {{ field.label_tag }}
                     {{ field }}

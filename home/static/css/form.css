@@ -5,22 +5,43 @@
     margin-top: 30px;
     text-align: center;
 }
-
-.form-head > .col-xs-4 {
-    text-align: center;
-    margin: 0;
-    padding: 20px;
-}
-.form-head > .col-xs-4 > h4 {
-    margin: 20px 0 0 0;
-    font-weight: bold;
+.form-head .col-md-4 span{
+    color: #a4c1e3;
 }
 .form-tel > p{
     margin-bottom: 0;
 }
-.form-address, .form-tel, .form-email {
-    margin-top: 20px;
+.form-head > .col-md-4 > h4 {
+    margin: 0;
+    font-weight: bold;
 }
+@media (min-width: 768px) {
+    .form-head > .col-md-4 {
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+    }
+    .form-head .col-md-4 span{
+        font-size: 48px;
+    }
+    .form-address, .form-tel, .form-email {
+        margin-top: 15px;
+    }
+}
+@media (max-width: 767px) {
+    .form-head > .col-md-4 {
+        text-align: center;
+        margin: 0;
+        padding: 10px;
+    }
+    .form-head .col-md-4 span{
+        font-size: 36px;
+    }
+    .form-address, .form-tel, .form-email {
+        margin-top: 10px;
+    }
+}
+
 
 /*在线留言*/
 .form-nav{
@@ -33,53 +54,12 @@
     font-size: 24px;
     border-bottom: 1px solid #c9c9c9;
 }
-
-
-.form-tag {
-    margin-right: 4%;
-    margin-left: 4%;
-    border: 1px solid #c9c9c9;
-    margin-bottom: 5px;
-}
-.fieldWrapper {
-    display: block;
-}
-.fieldWrapper label {
-    display: inline-block;
-    padding: 10px 5px;
-    float: left;
-    margin-bottom: 0;
-}
-.form-page input {
-    outline: none;
-    float: left;
-    width: 100px;
-    padding: 5px 5px;
-    border: 0;
-    margin-top: 5px;
-}
-form >div:nth-child(5){
-    border: 1px solid #c9c9c9;
-    width: 91%;
-    margin-bottom: 5px;
-}
-.form-page textarea{
-    outline: none;
-    padding: 5px 5px;
-    margin-top: 5px;
-    border: 0;
-}
-
 .form-submit {
     margin: 20px 0 20px 0;
     text-align: center;
 }
-.form-submit input {
-    display: inline-block;
-    color: white;
-    background-color: #b81b3a;
-    float: none;
-}
+
+
 @media (min-width:768px ) {
     .form-submit input {
         height: 48px;
@@ -87,18 +67,97 @@ form >div:nth-child(5){
         font-size: 24px;
     }
 }
-@media (max-width: 767px) {
+
+@media (min-width: 1200px) {
+    .form-tag {
+    /*margin-right: 4%;*/
+    /*margin-left: 4%;*/
+    /*border: 1px solid #c9c9c9;*/
+        padding: 0;
+        margin-bottom: 10px;
+    }
+    /*.fieldWrapper {*/
+        /*display: block;*/
+    /*}*/
+    form div:nth-child(2) div label, form div:nth-child(3) div label, form div:nth-child(4) div label {
+        border-left: 1px solid #c9c9c9;
+        border-top: 1px solid #c9c9c9;
+        border-bottom: 1px solid #c9c9c9;
+        display: inline-block;
+        padding: 5px 5px;
+        float: left;
+        margin-bottom: 0;
+    }
+    form div:nth-child(5){
+        width: 100%;
+        padding: 0;
+        border: 1px solid #c9c9c9;
+    }
+    form div:nth-child(5) div label{
+        display: inline-block;
+        float: left;
+        padding-top: 10px;
+    }
+    .form-page input {
+        border-right: 1px solid #c9c9c9;
+        border-left: 0;
+        border-top: 1px solid #c9c9c9;
+        border-bottom: 1px solid #c9c9c9;
+        height: 32px;
+
+        outline: none;
+        float: left;
+        width: 85%;
+        margin: 0;
+    }
+
+    .form-page textarea{
+        outline: none;
+        width: 100%;
+        padding: 5px 5px;
+        margin-top: 5px;
+        border: 0;
+    }
+    .form-submit input {
+        display: inline-block;
+        color: white;
+        width: 120px;
+        height: 50px;
+        background-color: #b81b3a;
+        float: none;
+    }
+}
+@media (max-width: 1199px) {
     .form-submit input{
         height: 36px;
         width: 90px;
+        color: white;
+        background-color: #b81b3a;
         font-size: 16px;
+        float: none;
     }
 }
+
+@media (max-width: 1200px) {
+    .form-tag{
+        width: 100%;
+    }
+    .fieldWrapper{
+        width: 100%;
+    }
+    form div:nth-child(2) div input, form div:nth-child(3) div input, form div:nth-child(4) div input{
+        width: 90%;
+    }
+    .form-page textarea{
+        width: 100%;
+    }
+}
+
+/*提交反馈意见之后的页面样式*/
 .form-reback {
     text-align: center;
     padding: 150px 0 150px 0;
 }
 .form-reback p{
     font-size: 36px;
-
 }
