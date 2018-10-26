@@ -24,14 +24,12 @@
         {#全局css#}
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/public.css' %}">
-        <!-- icon -->
+        <link rel="stylesheet" type="text/x-scss" href="{% static "css/streamfield.css" %}" />
         <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_864179_hznm3gjn8ig.css">
 
         {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
-            <link rel="stylesheet" type="text/x-scss" href="{% static "css/streamfield.css" %}" />
+
         {% endblock %}
-        {{ settings.home.AddonScriptsSettings.head|safe }}
     </head>
 
     <body>
@@ -45,30 +43,28 @@
             {% endblock %}
 
             <!--主体-->
-            {% block content %}{% endblock %}
+            {% block content %}
+            {% endblock %}
+
             <!-- 底部 -->
             {% block footnav %}
                 {% foot_nav calling_page=self %}
             {% endblock %}
         </div>
 
-        <div>
-
-        </div>
-
         {# 全局 javascript #}
-        <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/swiper.jquery.min.js' %}"></script>
         <script src="{% static 'js/public.js' %}"></script>
-        <script src="{% static 'js/yuandongweb.js' %}"></script>
 
         {% block extra_js %}
-            {# 额外的js #}
+
         {% endblock %}
-        <script>
-            $(document).ready(function(){
-            $(document).off('click.bs.dropdown.data-api');
-            });
-        </script>
+{#        <script>#}
+{#            $(document).ready(function(){#}
+{#            $(document).off('click.bs.dropdown.data-api');#}
+{#            });#}
+{#        </script>#}
     </body>
 </html>

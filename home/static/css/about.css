@@ -33,13 +33,17 @@
 .second-sale h3{
     text-align: center;
 }
-
 /*图片*/
 .item-image{
     text-align: center;
     margin-bottom: 30px;
 }
-
+.item-image-img{
+    text-align: center;
+}
+.item-image-img img{
+    display: inline-block;
+}
 .item-image-col-xs-12-2{
     margin: 10px 0 10px 0;
 }

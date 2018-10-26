@@ -33,7 +33,6 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 {% breadcrumbs page=self %}
-{#                {% include 'home/include/sub_swiper.html' with items=case_page %}#}
                 {% if swiper_page %}
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
@@ -63,7 +62,6 @@
     {% endblock %}
 {% endblock %}
 {% block extra_js %}
-<script src="{% static 'js/swiper.jquery.min.js' %}"></script>
 <script>
     var swiper = new Swiper('.swiper-container', {
         slidesPerView: 3,

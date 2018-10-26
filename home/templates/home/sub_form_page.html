@@ -16,14 +16,14 @@
             <div class="form-page col-md-8 col-md-offset-2">
                     {% breadcrumbs page=self %}
                     <div class="col-md-12 form-head">
-                        <div class="col-xs-4">
+                        <div class="col-md-4">
                             <span class="iconfont icon-dizhi" style="color: #a4c1e3;"></span>
                             <h4>地址</h4>
                             <div class="form-address">
                                 <p>{{ page.address }}</p>
                             </div>
                         </div>
-                        <div class="col-xs-4">
+                        <div class="col-md-4">
                             <span class="iconfont icon-dianhua" style="color: #a4c1e3;"></span>
                             <h4>电话</h4>
                             <div class="form-tel">
@@ -31,7 +31,7 @@
                                 <p>传真：{{ page.fax }}</p>
                             </div>
                         </div>
-                        <div class="col-xs-4">
+                        <div class="col-md-4">
                             <span class="iconfont icon-youxiang " style="color: #a4c1e3;"></span>
                             <h4>邮箱</h4>
                             <div class="form-email">
@@ -43,8 +43,33 @@
                         <p>在线留言</p>
                     </div>
 
-                    {% block sub_content %}
-                    {% endblock %}
+                    <div class="form-page-input">
+                        <form action="{% pageurl page %}" method="POST" role="form">
+                            {% csrf_token %}
+                            {% if form.subject.errors %}
+                                <ol role="alertdialog">
+                                {% for error in form.subject.errors %}
+                                    <li role="alert">
+                                        <strong>{{ error|escape }}</strong>
+                                    </li>
+                                {% endfor %}
+                                </ol>
+                            {% endif %}
+                            {% for field in form  %}
+                                <div class="col-xs-3 form-tag">
+                                    <div class="fieldWrapper" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            <div class="col-xs-12 form-submit">
+                                <input type="submit" value="提交">
+                            </div>
+                        </form>
+
+                    </div>
                 </div>
         </div>
     </div>

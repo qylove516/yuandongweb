@@ -655,7 +655,7 @@ class HomePage(Page):
         context = super(HomePage, self).get_context(request)
         context["about_us"] = AboutFirstPage.objects.live().all()[0]
         context["company_honor_page"] = self.company_honor_parent.specific.about_company_item.all()[:4]
-        context["case_page"] = self.case_parent.specific.case_item.all()[:4]
+        context["case_page"] = self.case_parent.specific.case_item.all()[:3]
         context["news_page"] = SubArticlePage.objects.live().descendant_of(self.news_parent).order_by("-date")[:6]
         return context
 

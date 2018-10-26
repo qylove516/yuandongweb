@@ -68,7 +68,7 @@
                                     <div class="col-md-12 index-about-body" id="wrapper">
                                         {{ page.sale_parent.specific.body }}<a href="{% pageurl about_us %}">详细></a><br>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 index-about-sale">
                                         <div class="col-md-6 about_brand">
                                             <a href="{% pageurl about_us %}"><span class="iconfont icon-1"></span>&thinsp;专卖店形象</a>
                                         </div>
@@ -121,18 +121,20 @@
                         </div>
                         <div class="panel-body">
                             {% for case in case_page  %}
-                            <div class="col-xs-3 index-case">
+                            <div class="col-md-4 index-case">
                                 {% if case.image %}
                                     {% image case.image fill-358x267 as image %}
-                                    <div class="col-xs-12">
-                                        <img src="{{ image.url }}" alt="" class="img-responsive index-honor-img" />
+                                    <div class="col-xs-12 index-case-img">
+                                        <img src="{{ image.url }}" alt="" class="img-responsive" />
                                     </div>
-                                    <div class="col-xs-12">
-                                        <div class="col-xs-8">
+                                    <div class="col-xs-12 index-case-title">
+                                        <div class="col-md-8">
                                             <p class="index-case-note">{{ case.note }}</p>
                                             <p class="index-case-note-en">{{ case.note_en }}</p>
                                         </div>
-                                        <span class="iconfont icon-icon-test"></span>
+                                        <div class="col-md-4">
+                                            <span class="iconfont icon-icon-test"></span>
+                                        </div>
                                     </div>
                                 {% endif %}
                             </div>
@@ -187,11 +189,15 @@
                     </div>
                     <div class="panel-body">
                         {% for honor in company_honor_page  %}
-                            <div class="col-xs-3 index-honor">
+                            <div class="col-md-3 index-honor">
                                 {% if honor.image %}
                                     {% image honor.image fill-240x165 as image %}
-                                    <img src="{{ image.url }}" alt="" class="img-responsive index-honor-img" />
-                                    <p class="index-honor-title">{{ honor.note }}</p>
+                                    <div class="col-xs-12 index-honor-img">
+                                        <img src="{{ image.url }}" alt="" class="img-responsive index-honor-img" />
+                                    </div>
+                                    <div class="col-xs-12 index-honor-title">
+                                        <p>{{ honor.note }}</p>
+                                    </div>
                                 {% endif %}
                             </div>
                         {% endfor %}
@@ -204,7 +210,6 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script src="{% static 'js/swiper.jquery.min.js' %}"></script>
     <script src="{% static 'js/jquery.dotdotdot.min.js' %}"></script>
     <script>
         var swiper = new Swiper('.swiper-container', {
