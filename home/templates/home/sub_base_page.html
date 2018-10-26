@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags wagtailcore_tags yuandongweb_tags %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/news_page.css" %}">
+{% endblock %}
+{% block content %}
+    {% if page.banner_image %}
+        {% image page.banner_image original as banner_image %}
+    {% endif %}
+
+    <div class="banner">
+        <img src="{{ banner_image.url }}" alt="" class="img-responsive">
+    </div>
+
+    {% block sub_content %}
+    {% endblock %}
+
+
+{% endblock %}

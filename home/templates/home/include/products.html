@@ -1,0 +1,19 @@
+{% load static wagtailimages_tags wagtailcore_tags %}
+
+<div>
+    {% for product in content %}
+        <div class="col-xs-3 product-list">
+            {% image product.image width-150 as image %}
+            <div class="product-img">
+                <img src="{{ image.url }}" alt="" class="img-responsive"/>
+            </div>
+            <div class="product-title">{{ product.title }}</div>
+            <p class="wrapper-product">{{ product.summary }}</p>
+            <a href="{% pageurl product %}">...了解详情</a>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="col-xs-12 product-bottom">
+    {% include "home/include/paginations.html" with subpages=content %}
+</div>

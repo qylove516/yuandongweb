@@ -1,0 +1,75 @@
+{% extends "home/sub_base_product_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+{% endblock %}
+
+{% block products %}
+    <div class="col-md-12 product-first-head">
+        <div class="col-xs-12">
+            <ul class="product-item">
+                <li class="selected">
+                    <a>
+                        <span class="iconfont icon-jianzhu" style="font-size: 52px"></span>
+                        <p>绿色建筑</p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="iconfont icon-energy_02" style="font-size: 52px"></span>
+                        <p>清洁能源</p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="iconfont icon-xianluxiangqingjiaotongfangshihuoche" style="font-size: 52px"></span>
+                        <p>智慧交通</p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="iconfont icon-dianwangqiye" style="font-size: 52px"></span>
+                        <p>智能电网</p>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="iconfont icon-lunchuan" style="font-size: 52px"></span>
+                        <p>高端设备</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-12 product-detail">
+        <div>
+            {% include "home/include/products.html" with content=green_product %}
+        </div>
+        <div class="hide">
+            {% include "home/include/products.html" with content=clean_product %}
+        </div>
+        <div class="hide">
+            {% include "home/include/products.html" with content=smart_product %}
+        </div>
+        <div class="hide">
+            {% include "home/include/products.html" with content=elastic_product %}
+        </div>
+        <div class="hide">
+            {% include "home/include/products.html" with content=height_product %}
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'js/jquery.dotdotdot.min.js' %}"></script>
+    <script>
+        $(function () {
+            var product_item = $(".product-item li");
+            product_item.click(function () {
+                $(this).addClass("selected").siblings().removeClass("selected");
+                var index = product_item.index(this);
+                $(".product-detail > div").eq(index).removeClass("hide").show().siblings().hide();
+            })
+        })
+    </script>
+{% endblock %}

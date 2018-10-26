@@ -1,0 +1,79 @@
+{% load static wagtailcore_tags wagtailimages_tags yuandongweb_tags %}
+<!-- css 部分在 public -->
+<link rel="stylesheet" type="text/css" href="{% static "css/footer.css" %}">
+<footer class="container-fluid foot-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="row-content col-xs-8 col-xs-offset-2">
+                <table style="width: 100%; height: 200px; color: white; margin-top: 30px" class="foot-web-head">
+                     <tr>
+                        <th align="left">公司简介</th>
+                        <th align="center">公司产品</th>
+                        <th align="center">远东专卖店</th>
+                        <th align="center">远东电缆专卖店相关网站</th>
+                        <th align="left">您可以从这里联系我们</th>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="{% pageurl about_us %}">{{ sale }}</a></td>
+                        <td align="left"><a href="{% pageurl product %}">{{ product }}</a></td>
+                        <td align="left"><a href="{% pageurl news %}">{{ news }}</a></td>
+                        <td align="left"><a href="{{ station }}" target="_blank">远东专卖店总站</a></td>
+                        <td align="left" rowspan="2"><span class="iconfont icon-tel" style="font-size: 48px"></span></td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="{% pageurl about_us %}">{{ company }}</a></td>
+                        <td align="left"></td>
+                        <td align="left"></td>
+                        <td align="left">
+                            远东控股集团下属网站
+                            <button data-toggle="modal" data-target="#myModal" class="foot-web-site">
+                                <span class="iconfont icon-jiantou-you" style="font-size: 18px"></span>
+                            </button>
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel">
+                                                模态框（Modal）标题
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            在这里添加一些文本
+                                            <a href="https://www.baidu.com">百度</a>
+                                        </div>
+{#                                        <div class="modal-footer">#}
+{#                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭#}
+{#                                            </button>#}
+{#                                            <button type="button" class="btn btn-primary">#}
+{#                                                提交更改#}
+{#                                            </button>#}
+{#                                        </div>#}
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td align="left"><a href="{% pageurl about_us %}">{{ sale_honor }}</a></td>
+                        <td align="right"></td>
+                        <td align="right"></td>
+                        <td align="right"></td>
+                        <td align="right">{{ tel }}</td>
+                     </tr>
+                    <tr>
+                        <td align="left"><a href="{% pageurl about_us %}">{{ sale_brand }}</a></td>
+                        <td align="right"></td>
+                        <td align="right"></td>
+                        <td align="right"></td>
+                     </tr>
+                </table>
+            </div>
+        </div>
+        <div class="foot-line">
+            {{ left }}{{ center }}{{ right }}
+        </div>
+    </div>
+</footer>

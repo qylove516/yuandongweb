@@ -1,0 +1,41 @@
+{% extends "home/sub_form_page.html" %}
+{% load static wagtailimages_tags wagtailcore_tags yuandongweb_tags %}
+{% block extra_css %}
+    <link type="text/css" href="{% static 'css/form.css' %}" rel="stylesheet">
+{% endblock %}
+{% block sub_content %}
+<div class="container">
+    <div class="row">
+        <div class="form-page col-md-8 col-md-offset-2">
+            {% breadcrumbs page=self %}
+            <div class="col-md-12 form-head">
+                <div class="col-xs-4">
+                    <span class="iconfont icon-dizhi" style="color: #a4c1e3;"></span>
+                    <h4>地址</h4>
+                    <div class="form-address">
+                        <p>{{ page.address }}</p>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <span class="iconfont icon-dianhua" style="color: #a4c1e3;"></span>
+                    <h4>电话</h4>
+                    <div class="form-tel">
+                        <p>电话：{{ page.tel }}</p>
+                        <p>传真：{{ page.fax }}</p>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <span class="iconfont icon-youxiang " style="color: #a4c1e3;"></span>
+                    <h4>邮箱</h4>
+                    <div class="form-email">
+                        <p>{{ page.email }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 form-nav">
+                <p>在线留言</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

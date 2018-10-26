@@ -1,0 +1,21 @@
+{% extends "home/sub_base_page.html" %}
+{% load static wagtailimages_tags wagtailcore_tags yuandongweb_tags %}
+
+{% block sub_content %}
+    <div class="container">
+        <div class="row">
+            <div class="news-content col-md-8 col-md-offset-2">
+                {% breadcrumbs page=self %}
+                <div class="news-content-title col-xs-12">
+                    <p>{{ page.title }}</p>
+                </div>
+                <div class="news-content-author-date col-xs-12">
+                    <p>作者：{{ page.specific.author_name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：{{ page.specific.date|date:"Y-m-d" }}</p>
+                </div>
+                <div class="news-content-body">
+                    {% include "home/include/streamfield.html" with content=self.body %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

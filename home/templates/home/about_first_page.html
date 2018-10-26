@@ -1,0 +1,47 @@
+{% extends "home/sub_about.html" %}
+{% load static wagtailcore_tags wagtailimages_tags yuandongweb_tags %}
+
+{% block sub_content %}
+    <div class="col-md-12 first-about-image">
+        <img src="{% static "image/about-us.png" %}" alt="" class="img-responsive">
+    </div>
+    <div class="col-md-12 about-header">
+        <div class="col-md-12 tab-menu">
+            <ul class="about-select-title">
+                <li class="selected">{{ page.about_us }}</li>
+                <li>{{ page.company_honor }}</li>
+                <li>{{ page.sale_honor }}</li>
+                <li>{{ page.sale_brand }}</li>
+            </ul>
+        </div>
+        <div class="col-md-12 tab-box" style="padding: 0 10px 0 10px;">
+            <div>
+                {% include "home/include/streamfield.html" with content=page.about_us.body %}
+            </div>
+            <div class="hide">
+                {% include "home/include/streamimage.html" with items=company_content %}
+            </div>
+            <div class="hide">
+                {% include "home/include/streamimage.html" with items=sale_honor_content %}
+            </div>
+            <div class="hide">
+                {% include "home/include/streamimage.html" with items=sale_brand_content %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+<script>
+    $(function(){
+        var $div_li = $("div.tab-menu ul li");
+        $div_li.click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected"); // 把选中的这个标签添加 class="selected",其它的去掉
+            var index = $div_li.index(this);
+            {#$("div.tab-box > div").eq(index).removeClass("hide");#}
+            $("div.tab-box > div").eq(index).removeClass("hide").show().siblings().hide();
+        })
+
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% load static wagtailcore_tags yuandongweb_tags %}
+{% get_site_root calling_page=page as site_root %}
+
+{% if ancestors %}
+    <div class="location col-md-12" style="padding: 0; margin-top: 10px; margin-bottom: 10px">
+        <p>
+            <a href="{% pageurl site_root %}"><span class="iconfont icon-yemian-copy"></span></a>&nbsp;&gt;&nbsp;
+            {% for ancestor in ancestors %}
+                {% if forloop.last %}
+                    <a class="active">{{ ancestor }}</a>
+                {% else %}
+                    <a href="{% pageurl ancestor %}">{{ ancestor }}</a>&nbsp;&gt;&nbsp;
+                {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+{% endif %}

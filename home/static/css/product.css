@@ -1,0 +1,79 @@
+.product-logo {
+    padding: 0 0 20px 0;
+    margin-top: 10px;
+}
+a{
+    text-decoration: none;
+}
+.product-item li a{
+    color: #b1c1d8;
+}
+.selected a span, .selected a p {
+    color: #045497;
+}
+.product-first-head{
+    padding: 0;
+}
+.product-first-head div:nth-child(1){
+    padding: 0;
+}
+.product-first-head div:nth-child(1) ul{
+    text-align: center;
+    border-top: 1px solid #d9d5d6;
+}
+.product-detail{
+    padding: 0;
+}
+.product-item > li{
+    cursor: pointer;
+	padding: 20px 5% 20px 5%;
+    display: inline-block;
+}
+
+.product-list{
+    margin: 0 0 20px 0;
+    padding: 0 10px 0 10px;
+    border: 1px solid #d9d9d9;
+}
+
+.product-list div{
+    text-align: center;
+    margin: 10px 0 10px 0;
+    display: inline-block;
+    width: 100%;
+
+}
+.product-list img{
+    display: inline-block;
+}
+.product-title{
+    border-top: 1px solid #666666;
+    border-bottom: 1px solid #666666;
+}
+
+.product-bottom{
+    text-align: center;
+}
+/*产品简介 省略号*/
+.wrapper-product {
+    position:relative;
+    line-height:1.4em;
+    /* 3 times the line-height to show 3 lines */
+    height:4.2em;
+    overflow:hidden;
+    margin-bottom: 0;
+}
+.product-list a{
+    text-align: left;
+}
+
+/*产品详情*/
+.product-detail-body{
+    padding-bottom: 30px;
+}
+.product-detail-title{
+    text-align: center;
+    border-bottom: 1px solid #d9d5d6;
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+}

@@ -1,0 +1,45 @@
+/*.row div {*/
+    /*padding: 0;*/
+/*}*/
+.about-header {
+    margin-top: 40px;
+    text-align: center;
+}
+.about-select-title{
+    background-color: #2eaaf7;
+    padding: 0;
+    margin-bottom: 50px;
+    border: 1px solid #2eaaf7;
+    border-radius: 5px;
+}
+
+.about-select-title > li{
+	cursor: pointer;
+	padding: 1%;
+    display: inline-block;
+}
+.selected {
+	/*color: #2e6da4;*/
+    background-color: #0277bf;
+}
+.first-about-image, .second-sale-image {
+    border-bottom: 1px solid #d9d5d6;
+}
+
+/*公司介绍*/
+.second-sale {
+    margin: 20px 0 20px 0;
+}
+.second-sale h3{
+    text-align: center;
+}
+
+/*图片*/
+.item-image{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.item-image-col-xs-12-2{
+    margin: 10px 0 10px 0;
+}

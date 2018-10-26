@@ -1,0 +1,22 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% if items %}
+    <div class="items-image">
+        {% for item in items %}
+            <div class="col-xs-4 item-image">
+                {% image item.image width-240 as image %}
+                <div class="col-xs-12">
+                    <img src="{{ image.url }}" alt="" class="img-responsive" style="display: inline-block;">
+                </div>
+                <div class="col-xs-12 item-image-col-xs-12-2">
+                    {{ item.note }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <div class="col-md-12" style="margin: 100px 0 200px 0;">
+            暂无数据
+        </div>
+    </div>
+{% endif %}

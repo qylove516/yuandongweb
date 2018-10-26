@@ -1,0 +1,25 @@
+.row-content {
+    padding: 10px 0 0 0;
+}
+.foot-web-site{
+    margin: 0;
+    padding: 0;
+    background-color: #1a3260;
+    border: 0;
+}
+.foot-web-head a{
+    color: white;
+}
+th{
+    text-align: center;
+    font-size: 18px;
+}
+td{
+    text-align: center;
+    height: 28px;
+}
+@media (max-width: 1023px) {
+    footer{
+        display: none;
+    }
+}

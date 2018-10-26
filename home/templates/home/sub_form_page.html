@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags yuandongweb_tags%}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+{% endblock %}
+{% block content %}
+    {% if page.image %}
+        {% image page.image original as banner_image %}
+    {% endif %}
+
+    <div class="banner">
+        <img src="{{ banner_image.url }}" alt="" class="img-responsive">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="form-page col-md-8 col-md-offset-2">
+                    {% breadcrumbs page=self %}
+                    <div class="col-md-12 form-head">
+                        <div class="col-xs-4">
+                            <span class="iconfont icon-dizhi" style="color: #a4c1e3;"></span>
+                            <h4>地址</h4>
+                            <div class="form-address">
+                                <p>{{ page.address }}</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <span class="iconfont icon-dianhua" style="color: #a4c1e3;"></span>
+                            <h4>电话</h4>
+                            <div class="form-tel">
+                                <p>电话：{{ page.tel }}</p>
+                                <p>传真：{{ page.fax }}</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <span class="iconfont icon-youxiang " style="color: #a4c1e3;"></span>
+                            <h4>邮箱</h4>
+                            <div class="form-email">
+                                <p>{{ page.email }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 form-nav">
+                        <p>在线留言</p>
+                    </div>
+
+                    {% block sub_content %}
+                    {% endblock %}
+                </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "home/sub_base_product_page.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+{% endblock %}
+{% block products %}
+    <div class="col-md-12 product-detail-body">
+        <div class="col-md-12 product-detail-title">
+            <h3>{{ page.title }}</h3>
+            <span>发布时间：{{ page.date|date:"Y-m-d" }}</span>&nbsp;&nbsp;
+            <span>来源：{{ page.author }}</span>
+        </div>
+        {% include "home/include/streamfield.html" with content=page.body %}
+    </div>
+{% endblock %}

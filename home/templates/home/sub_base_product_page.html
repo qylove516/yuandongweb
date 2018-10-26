@@ -1,0 +1,25 @@
+{% extends "home/sub_base_page.html" %}
+{% load static wagtailcore_tags wagtailcore_tags yuandongweb_tags %}
+
+
+{% block sub_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                {% breadcrumbs page=self %}
+
+                <div class="col-md-12 product-logo">
+                    <img src="{% static "img/product_header.png" %}" alt="" class="img-responsive">
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-12 menu-left-small">
+                        {% sub_nav menu_pages %}
+                    </div>
+                </div>
+                {% block products %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

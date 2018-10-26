@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags yuandongweb_tags %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/about.css" %}">
+{% endblock %}
+{% block content %}
+    {% if page.banner_image %}
+        {% image page.banner_image original as banner_image %}
+    {% endif %}
+
+    <div class="banner">
+        <img src="{{ banner_image.url }}" alt="" class="img-responsive">
+    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    {% breadcrumbs page=self %}
+                    {% block sub_content %}
+
+                    {% endblock %}
+                </div>
+            </div>
+    </div>
+
+{% endblock %}

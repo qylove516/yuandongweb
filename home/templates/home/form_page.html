@@ -1,0 +1,30 @@
+{% extends 'home/sub_form_page.html' %}
+{% load static wagtailimages_tags wagtailcore_tags %}
+{% block sub_content %}
+    <div class="form-page-input">
+        <form action="{% pageurl page %}" method="POST" role="form">
+            {% csrf_token %}
+            {% if form.subject.errors %}
+                <ol role="alertdialog">
+                {% for error in form.subject.errors %}
+                    <li role="alert">
+                        <strong>{{ error|escape }}</strong>
+                    </li>
+                {% endfor %}
+                </ol>
+            {% endif %}
+            {% for field in form  %}
+                <div class="col-xs-3 form-tag">
+                    <div class="fieldWrapper" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
+                    {{ field.label_tag }}
+                    {{ field }}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="col-xs-12 form-submit">
+                <input type="submit" value="提交">
+            </div>
+        </form>
+    </div>
+{% endblock %}

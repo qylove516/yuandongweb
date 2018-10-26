@@ -1,0 +1,24 @@
+{% load static wagtailimages_tags wagtailcore_tags %}
+
+{% if menu_pages %}
+    <ul>{{ page_url }}
+    {% for menu_page in menu_pages %}
+        <li class="menu-item">
+            {% if menu_page.specific.sub_menu_pages %}
+                <a>{{ menu_page.title }} {{ request }}</a>
+                <ul{% if menu_page.url in request.build_absolute_uri %} style="display: block;"{% endif %}>
+                    {% for sub_page in menu_page.specific.sub_menu_pages %}
+                    <li>
+                        <a{% if sub_page.url in request.build_absolute_uri %} class="active"{% endif %} href="{% pageurl sub_page %}">{{ sub_page.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <a{% if menu_page.url in request.build_absolute_uri %} class="active"{% endif %} href="{% pageurl menu_page %}" >{{ sub_page.title }}</a>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+
+{% endif %}

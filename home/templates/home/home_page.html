@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% block extra_css %}
+    <link href="{% static 'css/swiper.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/home.css' %}" rel="stylesheet"/>
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: auto;
+            margin: 0 auto 20px;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        .swiper-slide img {
+            width: 100%;
+        }
+        .swiper_code {
+            height: 20px;
+            position: absolute;
+            z-index: 1;
+            top: 85%;
+            width: 100%;
+            text-align: center;
+            line-height: 20px;
+            color: #fcd144;
+        }
+        .swiper_code a {
+            color: #fff;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    {% include "home/include/carousel.html" with carousel_items=self.carousel_items.all news=news_page.1 only %}
+
+    <div class="container">
+        <div class="row">
+            <div class="about-index col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    {% if self.sale_parent %}
+                        <div class="panel-heading">
+                            <span>{{ page.sale_parent.title }}</span>
+                            <span>{{ page.sale_parent.specific.embellish_title }}</span>
+                            <a href="{% pageurl about_us %}"><span>更多></span></a>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-12 index-news-top-summary">
+                                <p>{{ page.sale_parent.specific.summary }}</p>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-6 index-about-title">
+                                    <div class="col-md-12 index-about-body" id="wrapper">
+                                        {{ page.sale_parent.specific.body }}<a href="{% pageurl about_us %}">详细></a><br>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-6 about_brand">
+                                            <a href="{% pageurl about_us %}"><span class="iconfont icon-1"></span>&thinsp;专卖店形象</a>
+                                        </div>
+                                        <div class="col-md-6 about_honor">
+                                            <a href="{% pageurl about_us %}"><span class="iconfont icon-rongyu"></span>专卖店荣誉</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 card">
+                                    <div class="card-body">
+                                        <div class="col-xs-7">
+                                            <address class="news-address">
+                                                <div style="height: 40%" class="news-address-address">
+                                                    <span class="iconfont icon-lianxidizhi"></span><span class="news-address-1">&thinsp;联系地址</span><br>
+                                                    <span>{{ page.contract_us_parent.specific.address }}<a href="https://map.baidu.com/" target="_blank">&emsp;查看地图></a></span>
+                                                </div>
+                                                <div style="height: 40%">
+                                                    <span class="iconfont icon-jigoulianxifangshi"><span class="news-address-2">&thinsp;联系方式</span></span><br>
+                                                    <span>联系人：{{ page.contract_us_parent.specific.name }}</span><br>
+                                                    <span>联系电话：{{ page.contract_us_parent.specific.tel }}</span><br>
+                                                    <span>QQ：{{ page.contract_us_parent.specific.QQ }}</span><br>
+                                                    <span>邮箱：{{ page.contract_us_parent.specific.email }}</span><br>
+                                                </div>
+                                            </address>
+                                        </div>
+                                        <div class="col-xs-5 index-address-image">
+                                            {% image page.contract_us_parent.specific.qr_code fill-140x140 as card_image %}
+                                            <div style="text-align: center">
+                                                <img src="{{ card_image.url }}" alt="qr_code" class="img-responsive" style="display: block; margin: 0 auto;">
+                                            </div>
+                                            <div style="text-align: center">
+                                                <span>请扫描微信二维码</span><br>
+                                                <span>或<a href="{% pageurl page.contract_us_parent %}">在线留言</a></span><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="case-index col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    {% if page.case_parent %}
+                        <div class="panel-heading">
+                            <span>{{ page.case_parent.title }}</span>
+                            <span>{{ page.case_parent.specific.embellish_title }}</span>
+                            <a href="{% pageurl page.case_parent %}"><span>更多></span></a>
+                        </div>
+                        <div class="panel-body">
+                            {% for case in case_page  %}
+                            <div class="col-xs-3 index-case">
+                                {% if case.image %}
+                                    {% image case.image fill-358x267 as image %}
+                                    <div class="col-xs-12">
+                                        <img src="{{ image.url }}" alt="" class="img-responsive index-honor-img" />
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="col-xs-8">
+                                            <p class="index-case-note">{{ case.note }}</p>
+                                            <p class="index-case-note-en">{{ case.note_en }}</p>
+                                        </div>
+                                        <span class="iconfont icon-icon-test"></span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="news-index col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    {% if page.news_parent %}
+                    <div class="panel-heading">
+                        <span>{{ page.news_parent.title }}</span>
+                        <span>{{ page.news_parent.specific.embellish_title }}</span>
+                        <a href="{% pageurl page.news_parent %}"><span>更多></span></a>
+                    </div>
+                    <div class="panel-body">
+                        {% with news_first=news_page|first %}
+                        {% image news_first.specific.cover_image fill-430x280 as news_cover_image %}
+                        <div class="col-md-4 index-news-cover-image">
+                            <img src="{{ news_cover_image.url }}" alt="" class="img-responsive"/>
+                        </div>
+                        {% endwith %}
+                            <ul>
+                            {% for news in news_page %}
+                            <li>
+                                {% if forloop.first %}
+                                    <div class="col-md-8 index-news-summary">
+                                        <a href="{% pageurl news %}" class="index-news-title"><h4>{{ news.title }}</h4></a>
+                                        <span  class="index-news-summary-s" id="index-news-summary-span">{{ news.specific.summary }}</span><a href="{% pageurl news %}">更多></a>
+                                    </div>
+                                {% else %}
+                                    <div class="col-md-8 index-news">
+                                        <a href="{% pageurl news %}"><span>-{{ news.title }}</span><span class="index-news-date">{{ news.specific.date|date:"Y-m-d" }}</span></a>
+                                    </div>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        <!-- 公司荣誉墙 -->
+            <div class="honor-index col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    {% if page.company_honor_parent %}
+                    <div class="panel-heading">
+                        <span>{{ page.company_honor_parent.title }}</span>
+                        <span>{{ page.company_honor_parent.specific.embellish_title }}</span>
+                        <a href="{% pageurl about_us %}"><span>更多></span></a>
+                    </div>
+                    <div class="panel-body">
+                        {% for honor in company_honor_page  %}
+                            <div class="col-xs-3 index-honor">
+                                {% if honor.image %}
+                                    {% image honor.image fill-240x165 as image %}
+                                    <img src="{{ image.url }}" alt="" class="img-responsive index-honor-img" />
+                                    <p class="index-honor-title">{{ honor.note }}</p>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/swiper.jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.dotdotdot.min.js' %}"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            centeredSlides: true,
+            loop: true,
+            pagination: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            slidesPerView: 1,
+            autoplay: 5000,
+            autoplayDisableOnInteraction: false
+        });
+        var font_num= {};
+        font_num.get_length = function(str) {
+          //获得字符串实际长度，中文2，英文1
+          //要获得长度的字符串
+          var realLength = 0, len = str.length, charCode = -1;
+          for (var i = 0; i < len; i++) {
+            charCode = str.charCodeAt(i);
+            if (charCode >= 0 && charCode <= 128)
+               realLength += 1;
+            else
+               realLength += 2;
+          }
+          return realLength;
+        };
+        $(document).ready(function () {
+            var news_summary = document.getElementById("index-news-summary-span").innerText;
+            news_summary_length = font_num.get_length(news_summary);
+            news = news_summary.substr(0,60);
+            news = news + "...";
+            document.getElementById("index-news-summary-span").innerText = news;
+
+            $("#wrapper").dotdotdot({
+                wrap: 'letter',
+                after: 'a'
+
+            });
+        })
+    </script>
+{% endblock %}

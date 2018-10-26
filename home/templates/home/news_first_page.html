@@ -1,0 +1,100 @@
+{% extends "home/sub_base_page.html" %}
+{% load static wagtailimages_tags wagtailcore_tags yuandongweb_tags %}
+
+{% block sub_content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="panel">
+                <div class="news-first-nav col-md-8 col-md-offset-2">
+                    {% breadcrumbs page=self %}
+                    <div class="col-md-12">
+                        <img src="{% static "image/news_first_top.png" %}" alt="" class="img-responsive">
+                    </div>
+                    <div class="col-md-12">
+                        <div class="news-first-body-nav col-md-7">
+                            {% with  first_news=page.first_news %}
+                                {% image first_news.specific.cover_image fill-624x365 as news_cover_image %}
+                                <div class="col-md-12">
+                                    <img src="{{ news_cover_image.url }}" alt="" class="img-responsive">
+                                </div>
+                                <div class="col-md-12">
+                                    <a href="{% pageurl first_news %}">{{ first_news.title }}</a><br>
+                                    <span class="news-first-body-span">作者：{{ first_news.specific.author }}&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{{ first_news.specific.date|date:"Y-m-d" }}</span><br>
+                                    <span id="news-first-left-summary">{{ first_news.specific.summary }}</span><a href="{% pageurl first_news %}">【更多】</a>
+                                </div>
+                            {% endwith %}
+                        </div>
+                        <div class="news-first-body col-md-5">
+                            {% for new in news %}
+                                <div class="col-md-12">
+                                    <div class="col-md-3">
+                                        <a href="{% pageurl new %}">
+                                            {% image new.specific.image fill-120x95 as news_image%}
+                                            <img src="{{ news_image.url }}" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <a href="{% pageurl new %}" class="news-title">{{ new.title }}</a><br>
+                                        <span id="news-first-right-summary" class="news-summary">{{ new.specific.summary }}</span><a href="{% pageurl new %}" class="news-summary-span">查看详情</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% if news.paginator.count > 1 %}
+                        <div class="col-md-12 news-page">
+                            {% include "home/include/paginations.html" with subpages=news %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        function change_summary(k){
+            summary = k.text().substr(0,30);
+            summary = summary + "...";
+            k.text(summary);
+        }
+        function change_title(m){
+            summary = m.text().substr(0,15);
+            summary = summary + "...";
+            m.text(summary);
+        }
+        $(document).ready(function () {
+            var news_left_summary = document.getElementById("news-first-left-summary").innerText;
+            news_left = news_left_summary.substr(0,90);
+            news_left = news_left + "...";
+            document.getElementById("news-first-left-summary").innerText = news_left;
+
+            var summary_1 = $(".news-first-body .col-md-12:nth-child(1) .col-md-9 #news-first-right-summary");
+            var summary_a_1 = $(".news-first-body .col-md-12:nth-child(1) .col-md-9 a:nth-child(1)");
+            change_summary(summary_1);
+            change_title(summary_a_1);
+
+            var summary_2 = $(".news-first-body .col-md-12:nth-child(2) .col-md-9 #news-first-right-summary");
+            var summary_a_2 = $(".news-first-body .col-md-12:nth-child(2) .col-md-9 a:nth-child(1)");
+            change_summary(summary_2);
+            change_title(summary_a_2);
+
+            var summary_3 = $(".news-first-body .col-md-12:nth-child(3) .col-md-9 #news-first-right-summary");
+            var summary_a_3 = $(".news-first-body .col-md-12:nth-child(3) .col-md-9 a:nth-child(1)");
+            change_summary(summary_3);
+            change_title(summary_a_3);
+
+            var summary_4 = $(".news-first-body .col-md-12:nth-child(4) .col-md-9 #news-first-right-summary");
+            var summary_a_4 = $(".news-first-body .col-md-12:nth-child(4) .col-md-9 a:nth-child(1)");
+            change_summary(summary_4);
+            change_title(summary_a_4);
+
+            var summary_5 = $(".news-first-body .col-md-12:nth-child(5) .col-md-9 #news-first-right-summary");
+            var summary_a_5 = $(".news-first-body .col-md-12:nth-child(5) .col-md-9 a:nth-child(1)");
+            change_summary(summary_5);
+            change_title(summary_a_5);
+
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% load static wagtailcore_tags wagtailimages_tags yuandongweb_tags %}
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+
+            <div class="navbar-extra">
+                <a href="#"><span class="iconfont icon-ren" ></span>欢迎光临远东电缆专卖店有限公司网站</a>
+                <a href="#"><span class="iconfont icon-yuanquanjiantouyou-copy-copy" ></span>远东电缆专卖店</a>
+                <a href="#"><span class="iconfont icon-help-wzdt" ></span>网站地图</a>
+            </div>
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="navbar-brand" style="margin-left: 0">
+                <div>
+                    {% image logo_img width-400 as logo %}
+                    <img class="img-responsive logo-bg" src="{{ logo.url }}" alt="log"/>
+                    {% image tel_img width-300 as tel %}
+                    <img class="img-responsive tel-img" src="{{ tel.url }}" alt="联系电话"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar-collapse collapse menu" id="menu">
+        <ul class="nav navbar-nav">
+            <li><a href="{% pageurl root_page %}">{{ root_page.title }}</a></li>
+            {% for menuitem in menuitems %}
+                <li>
+                    {% if menuitem.show_dropdown %}
+                        <a href="{% pageurl menuitem %}">{{ menuitem.title }}<span class="caret"></span></a>
+                        {% header_dropdown parent=menuitem parent_specific=menuitem.specific submenu='submenu' %}
+                    {% else %}
+                        <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</nav>

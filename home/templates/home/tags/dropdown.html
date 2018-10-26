@@ -1,0 +1,14 @@
+{% load wagtailcore_tags  yuandongweb_tags%}
+
+<ul class="{{ submenu }}" style="display: none;">
+    {% for menuitem in menuitems_children %}
+        <li>
+            {% if menuitem.show_dropdown %}
+                <a href="{% pageurl menuitem %}">{{ menuitem.title }} <span class="caret bar"></span></a>
+                {% header_dropdown parent=menuitem parent_specific=menuitem.specific submenu='childmenu' %}
+            {% else %}
+                <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

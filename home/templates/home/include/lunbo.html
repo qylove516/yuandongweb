@@ -1,0 +1,70 @@
+{% load static wagtailimages_tags wagtailcore_tags wagtailimages_tags %}
+<style>
+* {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+a, img {
+	border:0;
+}
+body {
+	font:12px/180% Tahoma, Geneva, sans-serif;
+}
+/* Carousel */
+#carousel1 {
+	width:960px;
+	height:400px;
+	overflow:hidden;
+	position:relative;
+	border-bottom:solid 1px #d8d9da;
+	margin:0 auto;
+}
+#carousel1 img {
+	border:none;
+	width:240px;
+	height:180px;
+	border:solid 1px #000;
+}
+#carousel1 #title-text {
+	font-size:22px;
+	margin:10px 20px 0 0;
+	padding:0;
+	text-align:center;
+}
+#carousel1 #alt-text {
+	font-size:14px;
+	margin:5px 20px 0 0;
+	padding:0;
+	text-align:right;
+}
+#carousel1 #user-c {
+	padding:0;
+	position:absolute;
+	right:15px;
+	bottom:10px;
+}
+#carousel1 .carouselLeft, #carousel1 .carouselRight {
+	position:absolute;
+	bottom:20px;
+	width:29px;
+	height:30px;
+	overflow:hidden;
+	cursor:pointer;
+}
+
+</style>
+
+<div id="carousel1" class="col-md-12">
+    <p id="title-text"></p>
+    <p id="alt-text"></p>
+
+    {% for item in content %}
+        {% image  item.image original as image %}
+        <a target="_parent" ><img class="cloudcarousel"  src="{{ image.url }}" title="{{ item.note }}"/></a>
+    {% endfor %}
+
+    <div id="but1" class="carouselLeft"></div>
+    <div id="but2" class="carouselRight"></div>
+</div>
+

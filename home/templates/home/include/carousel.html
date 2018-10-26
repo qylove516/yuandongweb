@@ -1,0 +1,21 @@
+{% load wagtailimages_tags static wagtailcore_tags %}
+
+{% if carousel_items %}
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {% for carousel_item in carousel_items %}
+                {% image carousel_item.image fill-1920x600 as carouselimagedata %}
+                <div class="swiper-slide">
+                    <img src="{{ carouselimagedata.url }}" class="img-responsive">
+                </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-button-next swiper-button-white" style="margin-right: 10%"></div>
+        <div class="swiper-button-prev swiper-button-white" style="margin-left: 10%"></div>
+        <div class="swiper_code">
+            {% if news %}
+                <img src="{% static 'img/gift-1_03.png' %}">&emsp;{{ news.specific.title }}&emsp;<a href="{% pageurl news %}">查看活动</a>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
