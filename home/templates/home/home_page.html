@@ -153,7 +153,7 @@
                     </div>
                     <div class="panel-body">
                         {% with news_first=news_page|first %}
-                        {% image news_first.specific.cover_image fill-430x280 as news_cover_image %}
+                        {% image news_first.image fill-430x280 as news_cover_image %}
                         <div class="col-md-4 index-news-cover-image">
                             <img src="{{ news_cover_image.url }}" alt="" class="img-responsive"/>
                         </div>

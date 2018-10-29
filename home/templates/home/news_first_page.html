@@ -14,7 +14,7 @@
                     <div class="col-md-12">
                         <div class="news-first-body-nav col-md-7">
                             {% with  first_news=page.first_news %}
-                                {% image first_news.specific.cover_image fill-624x365 as news_cover_image %}
+                                {% image first_news.image fill-624x365 as news_cover_image %}
                                 <div class="col-md-12">
                                     <img src="{{ news_cover_image.url }}" alt="" class="img-responsive">
                                 </div>
