@@ -11,6 +11,7 @@ from wagtail.contrib.settings.models import BaseSetting
 from wagtail.contrib.settings.registry import register_setting
 from wagtail.core.blocks import StreamBlock, StructBlock, TextBlock, RichTextBlock, FieldBlock, CharBlock
 from wagtail.core.fields import StreamField
+from wagtail.snippets.models import register_snippet
 
 from wagtail.core.models import Page, Orderable
 from wagtail.images.blocks import ImageChooserBlock
@@ -725,6 +726,19 @@ class AddonScriptsSettings(BaseSetting):
         help_text='添加到body的脚本',
         default=''
     )
+
+
+@register_snippet
+class WebSite(models.Model):
+    title = models.CharField("网站名称", max_length=32, blank=True, null=True)
+    url = models.CharField("URL", max_length=64, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "相关网站"
+        verbose_name_plural = "相关网站"
 
 
 # 提交留言
