@@ -388,7 +388,7 @@ class ProductFirstPage(NavMenuItem):
     @property
     def height_product(self):
         k = ProductFirstPage.objects.live().filter(title="高端设备")
-        product = ProductDetailPage.objects.live().child_of(k[1])
+        product = ProductDetailPage.objects.live().child_of(k[0])
         height_product = product.order_by("-date")
         return height_product
 
