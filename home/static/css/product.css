@@ -47,8 +47,17 @@ a{
     display: inline-block;
 }
 .product-title{
+    height: 48px;
     border-top: 1px solid #666666;
     border-bottom: 1px solid #666666;
+}
+.product-title p{
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+
 }
 
 .product-bottom{
