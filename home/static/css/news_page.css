@@ -31,6 +31,13 @@
     display: inline-block;
     margin: 5px 0 10px 0;
 }
+.news-first-left-summary{
+    text-indent: 2em;
+    position: relative;
+    line-height: 2em;
+    height: 4em;
+    overflow: hidden;
+}
 .news-first-body {
     padding: 0;
 }

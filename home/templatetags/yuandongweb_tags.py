@@ -58,6 +58,7 @@ def foot_nav(context, parent=None, calling_page=None):
     news = models.NewsFirstPage.objects.live().descendant_of(site.root_page)[0]
     contract = models.FormPage.objects.live().all()[0]
     foot = SiteInfoSetting.for_site(site)
+    websites = models.WebSite.objects.all()
     return {
         "about_us": about_us,
         "sale": sale,
@@ -71,6 +72,7 @@ def foot_nav(context, parent=None, calling_page=None):
         "right": foot.right_content,
         "station": foot.name,
         "tel": contract.tel,
+        'websites': websites,
     }
 
 

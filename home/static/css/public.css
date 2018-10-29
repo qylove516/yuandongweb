@@ -205,6 +205,7 @@ a:hover {
     background-color: #1a3260;
 }
 .foot-line{
+    width: 100%;
     line-height: 30px;
     height: 30px;
     background-color: #0b1d41;

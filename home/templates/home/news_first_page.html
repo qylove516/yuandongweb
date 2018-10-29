@@ -21,7 +21,10 @@
                                 <div class="col-md-12">
                                     <a href="{% pageurl first_news %}">{{ first_news.title }}</a><br>
                                     <span class="news-first-body-span">作者：{{ first_news.specific.author }}&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{{ first_news.specific.date|date:"Y-m-d" }}</span><br>
-                                    <span id="news-first-left-summary">{{ first_news.specific.summary }}</span><a href="{% pageurl first_news %}">【更多】</a>
+                                    <div class="news-first-left-summary">
+                                        {{ first_news.specific.summary }}
+                                    </div>
+                                    <a href="{% pageurl first_news %}">...【更多】</a><br>
                                 </div>
                             {% endwith %}
                         </div>
@@ -65,10 +68,10 @@
             m.text(summary);
         }
         $(document).ready(function () {
-            var news_left_summary = document.getElementById("news-first-left-summary").innerText;
-            news_left = news_left_summary.substr(0,90);
-            news_left = news_left + "...";
-            document.getElementById("news-first-left-summary").innerText = news_left;
+            {#var news_left_summary = document.getElementById("news-first-left-summary").innerText;#}
+            {#news_left = news_left_summary.substr(0,90);#}
+            {#news_left = news_left + "...";#}
+            {#document.getElementById("news-first-left-summary").innerText = news_left;#}
 
             var summary_1 = $(".news-first-body .col-md-12:nth-child(1) .col-md-9 #news-first-right-summary");
             var summary_a_1 = $(".news-first-body .col-md-12:nth-child(1) .col-md-9 a:nth-child(1)");

@@ -10,6 +10,9 @@
 .foot-web-head a{
     color: white;
 }
+.modal-body > p > a:hover{
+    color: #1a3260;
+}
 th{
     text-align: center;
     font-size: 18px;

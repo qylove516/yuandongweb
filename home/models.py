@@ -154,8 +154,7 @@ class AboutCarouse(models.Model):
 class ImageFormatChoiceBlock(FieldBlock):
     """图片格式选择区块"""
     field = forms.ChoiceField(choices=(
-        ('default', '默认'), ('left', '靠左'), ('right', '靠右'), ('mid', '居中'), ('mid-avatar', '居中头像'), ('full', '页面宽度'),
-    ))
+        ('default', '默认'), ))
 
 
 class ImageBlock(StructBlock):
@@ -163,7 +162,7 @@ class ImageBlock(StructBlock):
     图片区块
     """
     image = ImageChooserBlock()
-    caption = TextBlock(required=True)
+    caption = TextBlock(required=False)
     alignment = ImageFormatChoiceBlock()
 
 
